@@ -1,0 +1,249 @@
+zipcode> db.zipcodes.aggregate({$group:{_id:"$state"}});
+[
+  { _id: 'FL' }, { _id: 'NH' },
+  { _id: 'MA' }, { _id: 'CT' },
+  { _id: 'VT' }, { _id: 'MO' },
+  { _id: 'NY' }, { _id: 'SC' },
+  { _id: 'NC' }, { _id: 'OK' },
+  { _id: 'TX' }, { _id: 'WV' },
+  { _id: 'MD' }, { _id: 'CO' },
+  { _id: 'RI' }, { _id: 'NE' },
+  { _id: 'AZ' }, { _id: 'SD' },
+  { _id: 'UT' }, { _id: 'NM' }
+]
+
+********************************************************************************************************
+
+zipcode> db.zipcodes.aggregate({$group:{_id:"$state",count:{$count:{}}}});
+[
+  { _id: 'CT', count: 263 },
+  { _id: 'DE', count: 53 },
+  { _id: 'FL', count: 804 },
+  { _id: 'MA', count: 474 },
+  { _id: 'NY', count: 1595 },
+  { _id: 'SC', count: 350 },
+  { _id: 'VT', count: 243 },
+  { _id: 'NH', count: 218 },
+  { _id: 'AL', count: 567 },
+  { _id: 'WV', count: 656 },
+  { _id: 'NC', count: 705 },
+  { _id: 'MO', count: 994 },
+  { _id: 'RI', count: 69 },
+  { _id: 'NE', count: 574 },
+  { _id: 'MD', count: 420 },
+  { _id: 'OK', count: 586 },
+  { _id: 'TX', count: 1671 },
+  { _id: 'CO', count: 414 },
+  { _id: 'UT', count: 205 },
+  { _id: 'SD', count: 384 }
+]
+
+***************************************************************************************************
+
+zipcode> db.zipcodes.aggregate({$group:{_id:"$pop",count:{$count:{}}}});
+[
+  { _id: 815, count: 4 },
+  { _id: 37227, count: 1 },
+  { _id: 11598, count: 3 },
+  { _id: 13274, count: 1 },
+  { _id: 9467, count: 1 },
+  { _id: 17743, count: 1 },
+  { _id: 13779, count: 1 },
+  { _id: 9893, count: 2 },
+  { _id: 37707, count: 1 },
+  { _id: 1158, count: 2 },
+  { _id: 18649, count: 1 },
+  { _id: 12587, count: 1 },
+  { _id: 185, count: 13 },
+  { _id: 8272, count: 1 },
+  { _id: 14422, count: 1 },
+  { _id: 3868, count: 1 },
+  { _id: 27090, count: 1 },
+  { _id: 6464, count: 1 },
+  { _id: 10294, count: 2 },
+  { _id: 18303, count: 2 }
+]
+
+**************************************************************************************************
+
+zipcode> db.zipcodes.find({}).sort({city:1});
+[
+  {
+    _id: '42601',
+    city: 'AARON',
+    loc: [ -85.199114, 36.812827 ],
+    pop: 270,
+    state: 'KY'
+  },
+  {
+    _id: '16820',
+    city: 'AARONSBURG',
+    loc: [ -77.387977, 40.876944 ],
+    pop: 100,
+    state: 'PA'
+  },
+  {
+    _id: '31794',
+    city: 'ABAC',
+    loc: [ -83.498867, 31.451722 ],
+    pop: 27906,
+    state: 'GA'
+  },
+  {
+    _id: '29620',
+    city: 'ABBEVILLE',
+    loc: [ -82.378452, 34.18186 ],
+    pop: 11344,
+    state: 'SC'
+  },
+  {
+    _id: '31001',
+    city: 'ABBEVILLE',
+    loc: [ -83.306845, 31.96484 ],
+    pop: 1991,
+    state: 'GA'
+  },
+  {
+    _id: '36310',
+    city: 'ABBEVILLE',
+    loc: [ -85.279044, 31.575479 ],
+    pop: 5416,
+    state: 'AL'
+  },
+  {
+    _id: '38601',
+    city: 'ABBEVILLE',
+    loc: [ -89.568835, 34.455553 ],
+    pop: 4649,
+    state: 'MS'
+  },
+  {
+    _id: '04406',
+    city: 'ABBOT VILLAGE',
+    loc: [ -69.52514, 45.279838 ],
+    pop: 1193,
+    state: 'ME'
+  },
+  {
+    _id: '54405',
+    city: 'ABBOTSFORD',
+    loc: [ -90.299438, 44.964057 ],
+    pop: 2480,
+    state: 'WI'
+  },
+  {
+    _id: '76621',
+    city: 'ABBOTT',
+    loc: [ -97.067146, 31.891642 ],
+    pop: 577,
+    state: 'TX'
+  },
+  {
+    _id: '60064',
+    city: 'ABBOTT PARK',
+    loc: [ -87.847819, 42.318901 ],
+    pop: 26542,
+    state: 'IL'
+  },
+  {
+    _id: '17301',
+    city: 'ABBOTTSTOWN',
+    loc: [ -76.993077, 39.888099 ],
+    pop: 1777,
+    state: 'PA'
+  },
+  {
+    _id: '67510',
+    city: 'ABBYVILLE',
+    loc: [ -98.207103, 37.962597 ],
+    pop: 267,
+    state: 'KS'
+  },
+  {
+    _id: '20606',
+    city: 'ABELL',
+    loc: [ -76.744104, 38.249554 ],
+    pop: 601,
+    state: 'MD'
+  },
+  {
+    _id: '21001',
+    city: 'ABERDEEN',
+    loc: [ -76.18054, 39.510886 ],
+    pop: 19229,
+    state: 'MD'
+  },
+  {
+    _id: '28315',
+    city: 'ABERDEEN',
+    loc: [ -79.445039, 35.121641 ],
+    pop: 7767,
+    state: 'NC'
+  },
+  {
+    _id: '39730',
+    city: 'ABERDEEN',
+    loc: [ -88.538033, 33.828439 ],
+    pop: 15769,
+    state: 'MS'
+  },
+  {
+    _id: '45101',
+    city: 'ABERDEEN',
+    loc: [ -83.763723, 38.670864 ],
+    pop: 2176,
+    state: 'OH'
+  },
+  {
+    _id: '57401',
+    city: 'ABERDEEN',
+    loc: [ -98.485642, 45.466109 ],
+    pop: 28786,
+    state: 'SD'
+  },
+  {
+    _id: '98520',
+    city: 'ABERDEEN',
+    loc: [ -123.79629, 46.984293 ],
+    pop: 22346,
+    state: 'WA'
+  }
+]
+Type "it" for more
+
+*************************************************************************************************
+zipcode> db.zipcodes.find({},{state:1,city:1}).sort({city:-1});
+[
+  { _id: '71486', city: 'ZWOLLE', state: 'LA' },
+  { _id: '52079', city: 'ZWINGLE', state: 'IA' },
+  { _id: '67676', city: 'ZURICH', state: 'KS' },
+  { _id: '23898', city: 'ZUNI', state: 'VA' },
+  { _id: '87327', city: 'ZUNI', state: 'NM' },
+  { _id: '55992', city: 'ZUMBROTA', state: 'MN' },
+  { _id: '59546', city: 'ZORTMAN', state: 'MT' },
+  { _id: '33890', city: 'ZOLFO SPRINGS', state: 'FL' },
+  { _id: '41397', city: 'ZOE', state: 'KY' },
+  { _id: '44656', city: 'ZOARVILLE', state: 'OH' },
+  { _id: '28790', city: 'ZIRCONIA', state: 'NC' },
+  { _id: '28698', city: 'ZIONVILLE', state: 'NC' },
+  { _id: '18092', city: 'ZIONSVILLE', state: 'PA' },
+  { _id: '46077', city: 'ZIONSVILLE', state: 'IN' },
+  { _id: '17985', city: 'ZION GROVE', state: 'PA' },
+  { _id: '60099', city: 'ZION', state: 'IL' },
+  { _id: '72556', city: 'ZION', state: 'AR' },
+  { _id: '55398', city: 'ZIMMERMAN', state: 'MN' },
+  { _id: '55799', city: 'ZIM', state: 'MN' },
+  { _id: '98953', city: 'ZILLAH', state: 'WA' }
+]
+Type "it" for more
+
+************************************************************************************
+
+zipcode> db.zipcodes.countDocuments();
+29353
+
+**************************************************************************************
+
+
+
+

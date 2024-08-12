@@ -1,0 +1,6 @@
+sample = ("universe","yes","ann","susan","uno")
+print(type(sample))
+t1=("ann",)
+print(type(t1))
+print(sample.count(1))
+print(tuple(sorted(sample)))

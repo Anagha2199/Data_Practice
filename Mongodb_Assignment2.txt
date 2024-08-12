@@ -1,0 +1,710 @@
+1.Give per share the average closing price, the minimum closing price, the maximum closing price and the average number of shares traded per day.
+ustdb> db.bel20.aggregate([{$group:{_id:["$name","$date"],avg_closing_price:{$avg:"$price.end"},min_closing_price:{$min:"$price.end"},max_closing_price:{$max:"$price.end"},avg_share:{$avg:"$number"}}},{$sort:{date:1}}]);
+[   _id: [ ISODate('2013-11-13T00:00:00.000Z'), 'Elia' ],
+  { avg_closing_price: 33.69,
+    _id: [ 'Elia', ISODate('2013-11-26T00:00:00.000Z') ],
+    avg_closing_price: 33.4,,
+    min_closing_price: 33.4,
+    max_closing_price: 33.4,
+    avg_share: 36600
+  },_id: [ ISODate('2013-11-07T00:00:00.000Z'), 'KBC' ],
+  { avg_closing_price: 39.67,
+    _id: [ 'KBC', ISODate('2013-11-19T00:00:00.000Z') ],
+    avg_closing_price: 39.6,,
+    min_closing_price: 39.6,
+    max_closing_price: 39.6,
+    avg_share: 3791500
+  },_id: [ ISODate('2013-11-19T00:00:00.000Z'), 'Elia' ],
+  { avg_closing_price: 33.4,
+    _id: [ 'KBC', ISODate('2013-11-21T00:00:00.000Z') ],
+    avg_closing_price: 39.42,
+    min_closing_price: 39.42,
+    max_closing_price: 39.42,
+    avg_share: 961900
+  },_id: [ ISODate('2013-11-22T00:00:00.000Z'), 'KBC' ],
+  { avg_closing_price: 39.7,
+    _id: [ 'KBC', ISODate('2013-11-05T00:00:00.000Z') ],
+    avg_closing_price: 39.1,
+    min_closing_price: 39.1,
+    max_closing_price: 39.1,
+    avg_share: 999000
+  },_id: [ ISODate('2013-11-08T00:00:00.000Z'), 'KBC' ],
+  { avg_closing_price: 39.9,
+    _id: [ 'Elia', ISODate('2013-11-20T00:00:00.000Z') ],
+    avg_closing_price: 33.4,
+    min_closing_price: 33.4,
+    max_closing_price: 33.4,
+    avg_share: 24200
+  },_id: [ ISODate('2013-11-11T00:00:00.000Z'), 'Elia' ],
+  { avg_closing_price: 34.15,
+    _id: [ 'KBC', ISODate('2013-11-07T00:00:00.000Z') ],
+    avg_closing_price: 39.67,
+    min_closing_price: 39.67,
+    max_closing_price: 39.67,
+    avg_share: 1183700
+  },_id: [ ISODate('2013-11-07T00:00:00.000Z'), 'Elia' ],
+  { avg_closing_price: 33.94,
+    _id: [ 'Elia', ISODate('2013-11-15T00:00:00.000Z') ],
+    avg_closing_price: 33.58,
+    min_closing_price: 33.58,
+    max_closing_price: 33.58,
+    avg_share: 17500
+  },_id: [ ISODate('2013-11-20T00:00:00.000Z'), 'KBC' ],
+  { avg_closing_price: 39.49,
+    _id: [ 'Elia', ISODate('2013-11-06T00:00:00.000Z') ],
+    avg_closing_price: 33.94,
+    min_closing_price: 33.94,
+    max_closing_price: 33.94,
+    avg_share: 24200
+  },_id: [ ISODate('2013-11-14T00:00:00.000Z'), 'Elia' ],
+  { avg_closing_price: 33.65,
+    _id: [ 'Elia', ISODate('2013-11-14T00:00:00.000Z') ],
+    avg_closing_price: 33.65,
+    min_closing_price: 33.65,
+    max_closing_price: 33.65,
+    avg_share: 37600
+  },_id: [ ISODate('2013-11-11T00:00:00.000Z'), 'KBC' ],
+  { avg_closing_price: 40.44,
+    _id: [ 'Elia', ISODate('2013-11-18T00:00:00.000Z') ],
+    avg_closing_price: 33.67,
+    min_closing_price: 33.67,
+    max_closing_price: 33.67,
+    avg_share: 17700
+  },_id: [ ISODate('2013-11-12T00:00:00.000Z'), 'KBC' ],
+  { avg_closing_price: 40.19,
+    _id: [ 'KBC', ISODate('2013-11-22T00:00:00.000Z') ],
+    avg_closing_price: 39.7,,
+    min_closing_price: 39.7,
+    max_closing_price: 39.7,
+    avg_share: 730400
+  },_id: [ ISODate('2013-11-19T00:00:00.000Z'), 'KBC' ],
+  { avg_closing_price: 39.6,
+    _id: [ 'KBC', ISODate('2013-11-04T00:00:00.000Z') ],
+    avg_closing_price: 39.45,
+    min_closing_price: 39.45,
+    max_closing_price: 39.45,
+    avg_share: 709300
+  },_id: [ ISODate('2013-11-05T00:00:00.000Z'), 'KBC' ],
+  { avg_closing_price: 39.1,
+    _id: [ 'KBC', ISODate('2013-11-20T00:00:00.000Z') ],
+    avg_closing_price: 39.49,
+    min_closing_price: 39.49,
+    max_closing_price: 39.49,
+    avg_share: 1555000
+  },_id: [ ISODate('2013-11-08T00:00:00.000Z'), 'Elia' ],
+  { avg_closing_price: 33.83,
+    _id: [ 'Elia', ISODate('2013-11-11T00:00:00.000Z') ],
+    avg_closing_price: 34.15,
+    min_closing_price: 34.15,
+    max_closing_price: 34.15,
+    avg_share: 19300
+  },_id: [ ISODate('2013-11-05T00:00:00.000Z'), 'Elia' ],
+  { avg_closing_price: 33.78,
+    _id: [ 'Elia', ISODate('2013-11-21T00:00:00.000Z') ],
+    avg_closing_price: 33.44,
+    min_closing_price: 33.44,
+    max_closing_price: 33.44,
+    avg_share: 22400
+  },_id: [ ISODate('2013-11-18T00:00:00.000Z'), 'KBC' ],
+  { avg_closing_price: 40.68,
+    _id: [ 'Elia', ISODate('2013-11-08T00:00:00.000Z') ],
+    avg_closing_price: 33.83,
+    min_closing_price: 33.83,
+    max_closing_price: 33.83,
+    avg_share: 20400
+  },_id: [ ISODate('2013-11-06T00:00:00.000Z'), 'Elia' ],
+  { avg_closing_price: 33.94,
+    _id: [ 'Elia', ISODate('2013-11-05T00:00:00.000Z') ],
+    avg_closing_price: 33.78,
+    min_closing_price: 33.78,
+    max_closing_price: 33.78,
+    avg_share: 23700
+  },_id: [ ISODate('2013-11-14T00:00:00.000Z'), 'KBC' ],
+  { avg_closing_price: 40.74,
+    _id: [ 'KBC', ISODate('2013-11-06T00:00:00.000Z') ],
+    avg_closing_price: 40,74,
+    min_closing_price: 40,
+    max_closing_price: 40,
+    avg_share: 946000
+  }, "it" for more
+  {db>
+    _id: [ 'KBC', ISODate('2013-11-14T00:00:00.000Z') ],
+    avg_closing_price: 40.74,
+    min_closing_price: 40.74,
+    max_closing_price: 40.74,
+    avg_share: 2092600
+  },
+  {
+    _id: [ 'Elia', ISODate('2013-11-13T00:00:00.000Z') ],
+    avg_closing_price: 33.69,
+    min_closing_price: 33.69,
+    max_closing_price: 33.69,
+    avg_share: 23600
+  }
+]
+Type "it" for more
+
+************************************************************************************************************************************
+
+2. Give per share the minimum closing price and the week in which this minimum closing price occurred. E.g.
+//KBC: minprice = 39.1 ; week = 44
+//Elia: minprice = 33.38 ; week = 46
+
+ustdb> db.bel20.aggregate([{$group:{_id:"$name",min_value:{$min:"$price.end"},week:{ $isoWeek:"$date"}}}]);
+
+***************************************************************************************************************************************
+
+3. Specify the number of cheeses per cheesetype. Put the cheesetype in capital letters.
+
+ustdb> db.cheeses.aggregate({$group:{_id:{$toUpper:"$properties.cheesetype"},count:{$count:{}}}});
+[ { _id: 'ABBEYCHEESE', count: 2 }, { _id: 'HARD CHEESE', count: 2 } ]
+
+******************************************************************************************************************************************
+
+4. Give the number of cheeses per cheese factory with at least 2 variants.
+
+db.cheeses.aggregate([{$group:{_id:"$factory",cheeseTypes:{$addToSet:"$properties.cheesetype"},count:{$sum:1},
+variantCount:{$sum:{$size:"$variants"}}}},{$match:{variantCount:{$gte:2}}},{$project:{_id:0,factory:"$_id",count:1}}]);
+
+ustdb> db.cheeses.aggregate([{$group:{_id:"$factory",cheeseTypes:{$addToSet:"$properties.cheesetype"},count:{$sum:1},varvariantCount:{$sum:{$size:"$variants"}}}},{$match:{variantCount:{$gte:2}}},{$project:{_id:0,factory:"$_id",count:1}}]);
+[
+  { count: 2, factory: 'Lindenhof' },
+  { count: 2, factory: 'Belgomilk' }
+]
+
+**************************************************************************************************************************
+
+5. normalize usernames: in upper case and in alphabetical order
+
+ustdb> db.userdetails.aggregate([{$project:{normalizedUserId:{$toUpper:"$user_id"}}},{$sort:{normalizedUserId:1}}]);
+[
+  {
+    _id: ObjectId('528cab88e1e41035b889f2bf'),
+    normalizedUserId: 'USER1'
+  },
+  {
+    _id: ObjectId('528cabb5e1e41035b889f2c0'),
+    normalizedUserId: 'USER2'
+  },
+  {
+    _id: ObjectId('528cabd0e1e41035b889f2c1'),
+    normalizedUserId: 'USER3'
+  },
+  {
+    _id: ObjectId('528cabece1e41035b889f2c2'),
+    normalizedUserId: 'USER4'
+  }
+]
+
+***********************************************************************************************************************
+
+6. Return the Five Most Common “Likes”
+
+ustdb> db.users.aggregate([{$unwind:"$likes"},{$group:{_id:"$likes",count:{$sum:1}}},{$sort:{ count: -1 } },{$limit:5}]);
+[
+  { _id: 'golf', count: 5 },
+  { _id: 'tennis', count: 3 },
+  { _id: 'racquetball', count: 3 },
+  { _id: 'darts', count: 2 },
+  { _id: 'basketball', count: 1 }
+]
+
+*******************************************************************************************************************
+
+7. Return States with Populations above 10 Million
+
+zipcode> db.zipcodes.aggregate([{$group:{_id:"$state",totalPop:{$sum:"$pop"}}},{$match:{totalPop:{$gte:10*1000*1000}}}]);
+[
+  { _id: 'NY', totalPop: 17990402 },
+  { _id: 'PA', totalPop: 11881643 },
+  { _id: 'IL', totalPop: 11427576 },
+  { _id: 'OH', totalPop: 10846517 },
+  { _id: 'TX', totalPop: 16984601 },
+  { _id: 'CA', totalPop: 29754890 },
+  { _id: 'FL', totalPop: 12686644 }
+]
+
+************************************************************************************************************************
+
+8. Return Average City Population by State
+
+zipcode> db.zipcodes.aggregate([{$group:{_id:{state:"$state",city:"$city"},pop:{$sum:"$pop"}}},{$group:{_id:"$_id.state",AvgCity:{$avg:"$pop"}}}])
+[
+  { _id: 'AK', AvgCity: 2976.4918032786886 },
+  { _id: 'NH', AvgCity: 5232.320754716981 },
+  { _id: 'TN', AvgCity: 9656.350495049504 },
+  { _id: 'KY', AvgCity: 4767.164721141375 },
+  { _id: 'AR', AvgCity: 4175.355239786856 },
+  { _id: 'IL', AvgCity: 9954.334494773519 },
+  { _id: 'OK', AvgCity: 6155.743639921722 },
+  { _id: 'ND', AvgCity: 1645.0309278350514 },
+  { _id: 'CO', AvgCity: 9981.075757575758 },
+  { _id: 'LA', AvgCity: 10465.496277915632 },
+  { _id: 'UT', AvgCity: 9518.508287292818 },
+  { _id: 'PA', AvgCity: 8679.067202337472 },
+  { _id: 'VT', AvgCity: 2315.8765432098767 },
+  { _id: 'VA', AvgCity: 8526.177931034483 },
+  { _id: 'NJ', AvgCity: 15775.89387755102 },
+  { _id: 'NY', AvgCity: 13131.680291970803 },
+  { _id: 'SD', AvgCity: 1839.6746031746031 },
+  { _id: 'OH', AvgCity: 12700.839578454332 },
+  { _id: 'ME', AvgCity: 3006.4901960784314 },
+  { _id: 'MI', AvgCity: 12087.512353706112 }
+]
+Type "it" for more
+
+*****************************************************************************************************************
+
+9. Return Largest and Smallest Cities by State (name and population)
+
+zipcode> db.zipcodes.aggregate([{$group:{_id:{state:"$state",city:"$city"},pop:{$sum:"$pop"}}},{$sort:{pop:1}},{$group:{_id:"$_id.state",smallestCity:{$first:"$_id.city"},smallestPop:{$first:"$pop"},largestCity:{$last:"$_id.city"},largestPop:{$last:"$pop"}}}]);
+[
+  {
+    _id: 'CO',
+    smallestCity: 'CHEYENNE MTN AFB',
+    smallestPop: 0,
+    largestCity: 'DENVER',
+    largestPop: 451182
+  },
+  {
+    _id: 'NV',
+    smallestCity: 'TUSCARORA',
+    smallestPop: 1,
+    largestCity: 'LAS VEGAS',
+    largestPop: 597557
+  },
+  {
+    _id: 'CA',
+    smallestCity: 'ALLEGHANY',
+    smallestPop: 0,
+    largestCity: 'LOS ANGELES',
+    largestPop: 2102295
+  },
+  {
+    _id: 'AR',
+    smallestCity: 'TOMATO',
+    smallestPop: 0,
+    largestCity: 'LITTLE ROCK',
+    largestPop: 192895
+  },
+  {
+    _id: 'HI',
+    smallestCity: 'NINOLE',
+    smallestPop: 0,
+    largestCity: 'HONOLULU',
+    largestPop: 396643
+  },
+  {
+    _id: 'GA',
+    smallestCity: 'FORT STEWART',
+    smallestPop: 0,
+    largestCity: 'ATLANTA',
+    largestPop: 609591
+  },
+  {
+    _id: 'TN',
+    smallestCity: 'ALLRED',
+    smallestPop: 2,
+    largestCity: 'MEMPHIS',
+    largestPop: 632837
+  },
+  {
+    _id: 'NY',
+    smallestCity: 'EAST SPRINGFIELD',
+    smallestPop: 0,
+    largestCity: 'BROOKLYN',
+    largestPop: 2300504
+  },
+  {
+    _id: 'NE',
+    smallestCity: 'LAKESIDE',
+    smallestPop: 5,
+    largestCity: 'OMAHA',
+    largestPop: 358930
+  },
+  {
+    _id: 'IA',
+    smallestCity: 'DOUDS',
+    smallestPop: 15,
+    largestCity: 'DES MOINES',
+    largestPop: 148155
+  },
+  {
+    _id: 'CT',
+    smallestCity: 'EAST KILLINGLY',
+    smallestPop: 25,
+    largestCity: 'BRIDGEPORT',
+    largestPop: 141638
+  },
+  {
+    _id: 'NH',
+    smallestCity: 'WEST NOTTINGHAM',
+    smallestPop: 27,
+    largestCity: 'MANCHESTER',
+    largestPop: 106452
+  },
+  {
+    _id: 'MS',
+    smallestCity: 'CHUNKY',
+    smallestPop: 79,
+    largestCity: 'JACKSON',
+    largestPop: 204788
+  },
+  {
+    _id: 'IN',
+    smallestCity: 'WESTPOINT',
+    smallestPop: 145,
+    largestCity: 'INDIANAPOLIS',
+    largestPop: 348868
+  },
+  {
+    _id: 'OH',
+    smallestCity: 'ISLE SAINT GEORG',
+    smallestPop: 38,
+    largestCity: 'CLEVELAND',
+    largestPop: 536759
+  },
+  {
+    _id: 'OK',
+    smallestCity: 'SOUTHARD',
+    smallestPop: 8,
+    largestCity: 'TULSA',
+    largestPop: 389072
+  },
+  {
+    _id: 'IL',
+    smallestCity: 'ANCONA',
+    smallestPop: 38,
+    largestCity: 'CHICAGO',
+    largestPop: 2452177
+  },
+  {
+    _id: 'MN',
+    smallestCity: 'JOHNSON',
+    smallestPop: 12,
+    largestCity: 'MINNEAPOLIS',
+    largestPop: 344719
+  },
+  {
+    _id: 'AL',
+    smallestCity: 'ALLEN',
+    smallestPop: 0,
+    largestCity: 'BIRMINGHAM',
+    largestPop: 242606
+  },
+  {
+    _id: 'FL',
+    smallestCity: 'CECIL FIELD NAS',
+    smallestPop: 0,
+    largestCity: 'MIAMI',
+    largestPop: 825232
+  }
+]
+Type "it" for more
+
+*****************************************************************************************************************
+
+10. Return the top 5 states with the most number of cities
+
+zipcode> db.zipcodes.aggregate([{$group:{_id:"$state",cityCount:{$sum:1}}},{$sort:{cityCount:-1}},{$limit:5}]);
+[
+  { _id: 'TX', cityCount: 1671 },
+  { _id: 'NY', cityCount: 1595 },
+  { _id: 'CA', cityCount: 1516 },
+  { _id: 'PA', cityCount: 1458 },
+  { _id: 'IL', cityCount: 1237 }
+]
+
+*****************************************************************************************************************
+
+11.fetch the result by sorting on "education" column in ascending order
+ustdb> db.userdetails.find({}).sort({education:1});
+[
+  {
+    _id: ObjectId('528cabb5e1e41035b889f2c0'),
+    user_id: 'user2',
+    password: '11aa1a',
+    date_of_join: '17/10/2009',
+    education: 'M.B.A.',
+    profession: 'MARKETING',
+    interest: 'MUSIC',
+    community_name: [ 'MODERN MUSIC', 'CLASSICAL MUSIC', 'WESTERN MUSIC' ],
+    community_moder_id: [ 'MR. Roy', 'MR. Das', 'MR Doglus' ],
+    community_members: [ 500, 300, 1400 ],
+    friends_id: [ 'pal', 'viki', 'john' ],
+    ban_friends_id: [ 'jalan', 'monoj', 'evan' ]
+  },
+  {
+    _id: ObjectId('528cabece1e41035b889f2c2'),
+    user_id: 'user4',
+    password: 'abczyx',
+    date_of_join: '17/8/2009',
+    education: 'M.B.B.S.',
+    profession: 'DOCTOR',
+    interest: 'SPORTS',
+    community_name: [ 'ATHELATIC', 'GAMES FAN GYES', 'FAVOURIT GAMES' ],
+    community_moder_id: [ 'MR. Paul', 'MR. Das', 'MR Doglus' ],
+    community_members: [ 2500, 2200, 3500 ],
+    friends_id: [ 'vinod', 'viki', 'john' ],
+    ban_friends_id: [ 'jalan', 'monoj', 'evan' ]
+  },
+  {
+    _id: ObjectId('528cab88e1e41035b889f2bf'),
+    user_id: 'user1',
+    password: '1a2b3c',
+    date_of_join: '16/10/2010',
+    education: 'M.C.A.',
+    profession: 'CONSULTANT',
+    interest: 'MUSIC',
+    community_name: [ 'MODERN MUSIC', 'CLASSICAL MUSIC', 'WESTERN MUSIC' ],
+    community_moder_id: [ 'MR. Alex', 'MR. Dang', 'MR Haris' ],
+    community_members: [ 700, 200, 1500 ],
+    friends_id: [ 'kumar', 'harry', 'anand' ],
+    ban_friends_id: [ 'Amir', 'Raja', 'mont' ]
+  },
+  {
+    _id: ObjectId('528cabd0e1e41035b889f2c1'),
+    user_id: 'user3',
+    password: 'b1c1d1',
+    date_of_join: '16/10/2010',
+    education: 'M.C.A.',
+    profession: 'IT COR.',
+    interest: 'ART',
+    community_name: [ 'MODERN ART', 'CLASSICAL ART', 'WESTERN ART' ],
+    community_moder_id: [ 'MR. Rifel', 'MR. Sarma', 'MR Bhatia' ],
+    community_members: [ 5000, 2000, 1500 ],
+    friends_id: [ 'philip', 'anant', 'alan' ],
+    ban_friends_id: [ 'Amir', 'Raja', 'mont' ]
+  }
+]
+
+************************************************************************************************************
+
+12.fetch the result by sorting on "education" column in descending order
+ustdb> db.userdetails.find({}).sort({education:-1});
+[
+  {
+    _id: ObjectId('528cab88e1e41035b889f2bf'),
+    user_id: 'user1',
+    password: '1a2b3c',
+    date_of_join: '16/10/2010',
+    education: 'M.C.A.',
+    profession: 'CONSULTANT',
+    interest: 'MUSIC',
+    community_name: [ 'MODERN MUSIC', 'CLASSICAL MUSIC', 'WESTERN MUSIC' ],
+    community_moder_id: [ 'MR. Alex', 'MR. Dang', 'MR Haris' ],
+    community_members: [ 700, 200, 1500 ],
+    friends_id: [ 'kumar', 'harry', 'anand' ],
+    ban_friends_id: [ 'Amir', 'Raja', 'mont' ]
+  },
+  {
+    _id: ObjectId('528cabd0e1e41035b889f2c1'),
+    user_id: 'user3',
+    password: 'b1c1d1',
+    date_of_join: '16/10/2010',
+    education: 'M.C.A.',
+    profession: 'IT COR.',
+    interest: 'ART',
+    community_name: [ 'MODERN ART', 'CLASSICAL ART', 'WESTERN ART' ],
+    community_moder_id: [ 'MR. Rifel', 'MR. Sarma', 'MR Bhatia' ],
+    community_members: [ 5000, 2000, 1500 ],
+    friends_id: [ 'philip', 'anant', 'alan' ],
+    ban_friends_id: [ 'Amir', 'Raja', 'mont' ]
+  },
+  {
+    _id: ObjectId('528cabece1e41035b889f2c2'),
+    user_id: 'user4',
+    password: 'abczyx',
+    date_of_join: '17/8/2009',
+    education: 'M.B.B.S.',
+    profession: 'DOCTOR',
+    interest: 'SPORTS',
+    community_name: [ 'ATHELATIC', 'GAMES FAN GYES', 'FAVOURIT GAMES' ],
+    community_moder_id: [ 'MR. Paul', 'MR. Das', 'MR Doglus' ],
+    community_members: [ 2500, 2200, 3500 ],
+    friends_id: [ 'vinod', 'viki', 'john' ],
+    ban_friends_id: [ 'jalan', 'monoj', 'evan' ]
+  },
+  {
+    _id: ObjectId('528cabb5e1e41035b889f2c0'),
+    user_id: 'user2',
+    password: '11aa1a',
+    date_of_join: '17/10/2009',
+    education: 'M.B.A.',
+    profession: 'MARKETING',
+    interest: 'MUSIC',
+    community_name: [ 'MODERN MUSIC', 'CLASSICAL MUSIC', 'WESTERN MUSIC' ],
+    community_moder_id: [ 'MR. Roy', 'MR. Das', 'MR Doglus' ],
+    community_members: [ 500, 300, 1400 ],
+    friends_id: [ 'pal', 'viki', 'john' ],
+    ban_friends_id: [ 'jalan', 'monoj', 'evan' ]
+  }
+]
+
+**********************************************************************************************************
+
+13.fetch the result by sorting on "education" column in ascending order and "password" column in descending order
+ustdb> db.userdetails.find({}).sort({education:1,password:-1});
+[
+  {
+    _id: ObjectId('528cabb5e1e41035b889f2c0'),
+    user_id: 'user2',
+    password: '11aa1a',
+    date_of_join: '17/10/2009',
+    education: 'M.B.A.',
+    profession: 'MARKETING',
+    interest: 'MUSIC',
+    community_name: [ 'MODERN MUSIC', 'CLASSICAL MUSIC', 'WESTERN MUSIC' ],
+    community_moder_id: [ 'MR. Roy', 'MR. Das', 'MR Doglus' ],
+    community_members: [ 500, 300, 1400 ],
+    friends_id: [ 'pal', 'viki', 'john' ],
+    ban_friends_id: [ 'jalan', 'monoj', 'evan' ]
+  },
+  {
+    _id: ObjectId('528cabece1e41035b889f2c2'),
+    user_id: 'user4',
+    password: 'abczyx',
+    date_of_join: '17/8/2009',
+    education: 'M.B.B.S.',
+    profession: 'DOCTOR',
+    interest: 'SPORTS',
+    community_name: [ 'ATHELATIC', 'GAMES FAN GYES', 'FAVOURIT GAMES' ],
+    community_moder_id: [ 'MR. Paul', 'MR. Das', 'MR Doglus' ],
+    community_members: [ 2500, 2200, 3500 ],
+    friends_id: [ 'vinod', 'viki', 'john' ],
+    ban_friends_id: [ 'jalan', 'monoj', 'evan' ]
+  },
+  {
+    _id: ObjectId('528cabd0e1e41035b889f2c1'),
+    user_id: 'user3',
+    password: 'b1c1d1',
+    date_of_join: '16/10/2010',
+    education: 'M.C.A.',
+    profession: 'IT COR.',
+    interest: 'ART',
+    community_name: [ 'MODERN ART', 'CLASSICAL ART', 'WESTERN ART' ],
+    community_moder_id: [ 'MR. Rifel', 'MR. Sarma', 'MR Bhatia' ],
+    community_members: [ 5000, 2000, 1500 ],
+    friends_id: [ 'philip', 'anant', 'alan' ],
+    ban_friends_id: [ 'Amir', 'Raja', 'mont' ]
+  },
+  {
+    _id: ObjectId('528cab88e1e41035b889f2bf'),
+    user_id: 'user1',
+    password: '1a2b3c',
+    date_of_join: '16/10/2010',
+    education: 'M.C.A.',
+    profession: 'CONSULTANT',
+    interest: 'MUSIC',
+    community_name: [ 'MODERN MUSIC', 'CLASSICAL MUSIC', 'WESTERN MUSIC' ],
+    community_moder_id: [ 'MR. Alex', 'MR. Dang', 'MR Haris' ],
+    community_members: [ 700, 200, 1500 ],
+    friends_id: [ 'kumar', 'harry', 'anand' ],
+    ban_friends_id: [ 'Amir', 'Raja', 'mont' ]
+  }
+]
+
+*************************************************************************************************************
+
+14.fetch first two documents from the collection "userdetails"
+ustdb> db.userdetails.find({}).limit(2);
+[
+  {
+    _id: ObjectId('528cab88e1e41035b889f2bf'),
+    user_id: 'user1',
+    password: '1a2b3c',
+    date_of_join: '16/10/2010',
+    education: 'M.C.A.',
+    profession: 'CONSULTANT',
+    interest: 'MUSIC',
+    community_name: [ 'MODERN MUSIC', 'CLASSICAL MUSIC', 'WESTERN MUSIC' ],
+    community_moder_id: [ 'MR. Alex', 'MR. Dang', 'MR Haris' ],
+    community_members: [ 700, 200, 1500 ],
+    friends_id: [ 'kumar', 'harry', 'anand' ],
+    ban_friends_id: [ 'Amir', 'Raja', 'mont' ]
+  },
+  {
+    _id: ObjectId('528cabb5e1e41035b889f2c0'),
+    user_id: 'user2',
+    password: '11aa1a',
+    date_of_join: '17/10/2009',
+    education: 'M.B.A.',
+    profession: 'MARKETING',
+    interest: 'MUSIC',
+    community_name: [ 'MODERN MUSIC', 'CLASSICAL MUSIC', 'WESTERN MUSIC' ],
+    community_moder_id: [ 'MR. Roy', 'MR. Das', 'MR Doglus' ],
+    community_members: [ 500, 300, 1400 ],
+    friends_id: [ 'pal', 'viki', 'john' ],
+    ban_friends_id: [ 'jalan', 'monoj', 'evan' ]
+  }
+]
+
+***********************************************************************************************************
+
+15.fetch two documents after the first two documents from the collection 'userdetails'
+ustdb> db.userdetails.find({}).limit(2).skip(2);
+[
+  {
+    _id: ObjectId('528cabd0e1e41035b889f2c1'),
+    user_id: 'user3',
+    password: 'b1c1d1',
+    date_of_join: '16/10/2010',
+    education: 'M.C.A.',
+    profession: 'IT COR.',
+    interest: 'ART',
+    community_name: [ 'MODERN ART', 'CLASSICAL ART', 'WESTERN ART' ],
+    community_moder_id: [ 'MR. Rifel', 'MR. Sarma', 'MR Bhatia' ],
+    community_members: [ 5000, 2000, 1500 ],
+    friends_id: [ 'philip', 'anant', 'alan' ],
+    ban_friends_id: [ 'Amir', 'Raja', 'mont' ]
+  },
+  {
+    _id: ObjectId('528cabece1e41035b889f2c2'),
+    user_id: 'user4',
+    password: 'abczyx',
+    date_of_join: '17/8/2009',
+    education: 'M.B.B.S.',
+    profession: 'DOCTOR',
+    interest: 'SPORTS',
+    community_name: [ 'ATHELATIC', 'GAMES FAN GYES', 'FAVOURIT GAMES' ],
+    community_moder_id: [ 'MR. Paul', 'MR. Das', 'MR Doglus' ],
+    community_members: [ 2500, 2200, 3500 ],
+    friends_id: [ 'vinod', 'viki', 'john' ],
+    ban_friends_id: [ 'jalan', 'monoj', 'evan' ]
+  }
+]
+
+******************************************************************************************************8
+
+16.fetch the two documents after the first document from the collection 'userdetails'
+ustdb> db.userdetails.find({}).limit(2).skip(1);
+[
+  {
+    _id: ObjectId('528cabb5e1e41035b889f2c0'),
+    user_id: 'user2',
+    password: '11aa1a',
+    date_of_join: '17/10/2009',
+    education: 'M.B.A.',
+    profession: 'MARKETING',
+    interest: 'MUSIC',
+    community_name: [ 'MODERN MUSIC', 'CLASSICAL MUSIC', 'WESTERN MUSIC' ],
+    community_moder_id: [ 'MR. Roy', 'MR. Das', 'MR Doglus' ],
+    community_members: [ 500, 300, 1400 ],
+    friends_id: [ 'pal', 'viki', 'john' ],
+    ban_friends_id: [ 'jalan', 'monoj', 'evan' ]
+  },
+  {
+    _id: ObjectId('528cabd0e1e41035b889f2c1'),
+    user_id: 'user3',
+    password: 'b1c1d1',
+    date_of_join: '16/10/2010',
+    education: 'M.C.A.',
+    profession: 'IT COR.',
+    interest: 'ART',
+    community_name: [ 'MODERN ART', 'CLASSICAL ART', 'WESTERN ART' ],
+    community_moder_id: [ 'MR. Rifel', 'MR. Sarma', 'MR Bhatia' ],
+    community_members: [ 5000, 2000, 1500 ],
+    friends_id: [ 'philip', 'anant', 'alan' ],
+    ban_friends_id: [ 'Amir', 'Raja', 'mont' ]
+  }
+]

@@ -1,0 +1,749 @@
+https://www.mongodb.com/try/download/tools - download from this site
+
+copy and paste the exe/app files to the below path:
+c -> program files -> MongoDB -> Server -> 7.0 -> bin
+
+cmd 
+
+>>mongosh
+>>show dbs
+-- list of databases in mongo shell
+>> use ustdb
+ustdb> db.createCollection("Employee"); 
+{ ok: 1 }
+ustdb> db.dropDatabase(); 
+{ ok: 1, dropped: 'ustdb' }
+ustdb> show collections;
+Employee
+ustdb> db.Employee.drop();
+ustdb> db.Employee.insertOne(
+ {
+ 	firstName : "Parag",
+ 	lastName : "Joshi",
+ 	age : 40,
+ 	married : true
+ }
+ );
+ustdb> db.Employee.insertMany([
+{firstName : "Anagha",lastName : "Suresh",age : 25,married : "False"},
+{firstName : "Akshay",lastName : "Suresh",age : 14,married : "False"}
+]);
+ustdb> db.Employee.find()
+[
+  {
+    _id: ObjectId('66b318f0ae8f5e61c8228fb5'),
+    firstName: 'Parag',
+    lastName: 'Joshi',
+    age: 40
+  },
+  {
+    _id: ObjectId('66b319ceae8f5e61c8228fb6'),
+    firstName: 'Anagha',
+    lastName: 'Suresh',
+    age: 25,
+    married: 'False'
+  },
+  {
+    _id: ObjectId('66b33e16ae8f5e61c8228fb7'),
+    firstName: 'Akshay',
+    lastName: 'Suresh',
+    age: 14,
+    married: 'False'
+  }
+]
+ustdb> db.Employee.find({age:{$gt:20}},{_id:0,firstName:1,lastName:1});
+[
+  { firstName: 'Parag', lastName: 'Joshi' },
+  { firstName: 'Anagha', lastName: 'Suresh' }
+]
+ustdb> db.Employee.find({},{_id:0,firstName:1,lastName:1}).sort({firstName:1});
+[
+  { firstName: 'Akshay', lastName: 'Suresh' },
+  { firstName: 'Anagha', lastName: 'Suresh' },
+  { firstName: 'Parag', lastName: 'Joshi' }
+]
+ustdb> db.Employee.find({},{_id:0,firstName:1,lastName:1}).sort({lastName:1});
+[
+  { firstName: 'Parag', lastName: 'Joshi' },
+  { firstName: 'Anagha', lastName: 'Suresh' },
+  { firstName: 'Akshay', lastName: 'Suresh' }
+]
+
+ustdb> db.Employee.insertOne( { firstName: "vineetha", lastName: "Suresh", age: 43, married: "True" } );
+{
+  acknowledged: true,
+  insertedId: ObjectId('66b33fdbae8f5e61c8228fb8')
+}
+ustdb> db.Employee.find({},{_id:0,firstName:1,lastName:1}).sort({firstName:1});
+[
+  { firstName: 'Akshay', lastName: 'Suresh' },
+  { firstName: 'Anagha', lastName: 'Suresh' },
+  { firstName: 'Parag', lastName: 'Joshi' },
+  { firstName: 'vineetha', lastName: 'Suresh' }
+]
+ustdb> db.Employee.find({},{_id:0,firstName:1,lastName:1}).sort({firstName:-1});
+[
+  { firstName: 'vineetha', lastName: 'Suresh' },
+  { firstName: 'Parag', lastName: 'Joshi' },
+  { firstName: 'Anagha', lastName: 'Suresh' },
+  { firstName: 'Akshay', lastName: 'Suresh' }
+]
+ustdb> db.Employee.find({},{_id:0,firstName:1,lastName:1}).sort({lastName:-1});
+[
+  { firstName: 'Anagha', lastName: 'Suresh' },
+  { firstName: 'Akshay', lastName: 'Suresh' },
+  { firstName: 'vineetha', lastName: 'Suresh' },
+  { firstName: 'Parag', lastName: 'Joshi' }
+]
+ustdb> db.Employee.find({},{_id:0,firstName:1,lastName:1}).sort({lastName:1});
+[
+  { firstName: 'Parag', lastName: 'Joshi' },
+  { firstName: 'Anagha', lastName: 'Suresh' },
+  { firstName: 'Akshay', lastName: 'Suresh' },
+  { firstName: 'vineetha', lastName: 'Suresh' }
+]
+ustdb> db.Employee.find({lastName:{$in:["Suresh"]}});
+[
+  {
+    _id: ObjectId('66b319ceae8f5e61c8228fb6'),
+    firstName: 'Anagha',
+    lastName: 'Suresh',
+    age: 25,
+    married: 'False'
+  },
+  {
+    _id: ObjectId('66b33e16ae8f5e61c8228fb7'),
+    firstName: 'Akshay',
+    lastName: 'Suresh',
+    age: 14,
+    married: 'False'
+  },
+  {
+    _id: ObjectId('66b33fdbae8f5e61c8228fb8'),
+    firstName: 'vineetha',
+    lastName: 'Suresh',
+    age: 43,
+    married: 'True'
+  }
+]
+inventory:
+ustdb> db.inventory.insertMany([
+
+   { item: "journal", qty: 25, tags: ["blank", "red"], dim_cm: [ 14, 21 ] },
+
+   { item: "notebook", qty: 50, tags: ["red", "blank"], dim_cm: [ 14, 21 ] },
+
+   { item: "paper", qty: 100, tags: ["red", "blank", "plain"], dim_cm: [ 14, 21 ] },
+
+   { item: "planner", qty: 75, tags: ["blank", "red"], dim_cm: [ 22.85, 30 ] },
+
+   { item: "postcard", qty: 45, tags: ["blue"], dim_cm: [ 10, 15.25 ] }
+
+]);
+ustdb> db.inventory.find();
+[
+  {
+    _id: ObjectId('66b34758ae8f5e61c8228fb9'),
+    item: 'journal',
+    qty: 25,
+    tags: [ 'blank', 'red' ],
+    dim_cm: [ 14, 21 ]
+  },
+  {
+    _id: ObjectId('66b34758ae8f5e61c8228fba'),
+    item: 'notebook',
+    qty: 50,
+    tags: [ 'red', 'blank' ],
+    dim_cm: [ 14, 21 ]
+  },
+  {
+    _id: ObjectId('66b34758ae8f5e61c8228fbb'),
+    item: 'paper',
+    qty: 100,
+    tags: [ 'red', 'blank', 'plain' ],
+    dim_cm: [ 14, 21 ]
+  },
+  {
+    _id: ObjectId('66b34758ae8f5e61c8228fbc'),
+    item: 'planner',
+    qty: 75,
+    tags: [ 'blank', 'red' ],
+    dim_cm: [ 22.85, 30 ]
+  },
+  {
+    _id: ObjectId('66b34758ae8f5e61c8228fbd'),
+    item: 'postcard',
+    qty: 45,
+    tags: [ 'blue' ],
+    dim_cm: [ 10, 15.25 ]
+  }
+]
+ustdb> db.inventory.find({qty:{$gte:50}});
+[
+  {
+    _id: ObjectId('66b34758ae8f5e61c8228fba'),
+    item: 'notebook',
+    qty: 50,
+    tags: [ 'red', 'blank' ],
+    dim_cm: [ 14, 21 ]
+  },
+  {
+    _id: ObjectId('66b34758ae8f5e61c8228fbb'),
+    item: 'paper',
+    qty: 100,
+    tags: [ 'red', 'blank', 'plain' ],
+    dim_cm: [ 14, 21 ]
+  },
+  {
+    _id: ObjectId('66b34758ae8f5e61c8228fbc'),
+    item: 'planner',
+    qty: 75,
+    tags: [ 'blank', 'red' ],
+    dim_cm: [ 22.85, 30 ]
+  }
+]
+ustdb> db.inventory.find({$or:[{qty:100},{item:'notebook'}]});
+[ {
+  { _id: ObjectId('66b34758ae8f5e61c8228fbb'),
+    _id: ObjectId('66b34758ae8f5e61c8228fba'),
+    item: 'notebook',
+    qty: 50,'red', 'blank', 'plain' ],
+    tags: [ 'red', 'blank' ],
+    dim_cm: [ 14, 21 ]
+  },
+  { _id: ObjectId('66b34758ae8f5e61c8228fbc'),
+    _id: ObjectId('66b34758ae8f5e61c8228fbb'),
+    item: 'paper',
+    qty: 100,blank', 'red' ],
+    tags: [ 'red', 'blank', 'plain' ],
+    dim_cm: [ 14, 21 ]
+  }
+ustdb> db.inventory.find({$and:[{tags:'red'},{tags:'blank'}]});
+[ {
+  { _id: ObjectId('66b34758ae8f5e61c8228fba'),
+    _id: ObjectId('66b34758ae8f5e61c8228fb9'),
+    item: 'journal',
+    qty: 25,'red', 'blank' ],
+    tags: [ 'blank', 'red' ],
+    dim_cm: [ 14, 21 ]
+  },
+  { _id: ObjectId('66b34758ae8f5e61c8228fbb'),
+    _id: ObjectId('66b34758ae8f5e61c8228fba'),
+    item: 'notebook',
+    qty: 50,'red', 'blank', 'plain' ],
+    tags: [ 'red', 'blank' ],
+    dim_cm: [ 14, 21 ]
+  },
+  { _id: ObjectId('66b34758ae8f5e61c8228fbc'),
+    _id: ObjectId('66b34758ae8f5e61c8228fbb'),
+    item: 'paper',
+    qty: 100,blank', 'red' ],
+    tags: [ 'red', 'blank', 'plain' ],
+    dim_cm: [ 14, 21 ]
+  },
+  {db>
+    _id: ObjectId('66b34758ae8f5e61c8228fbc'),
+    item: 'planner',
+    qty: 75,
+    tags: [ 'blank', 'red' ],
+    dim_cm: [ 22.85, 30 ]
+  }
+]
+persons:
+ustdb> db.persons.insertMany(
+...
+... [{
+...
+...     firstName: "Vinay",
+...
+...     lastName: "Rao",
+...
+...     email: "vr@hotmail.com",
+...
+...     salary: 56000,
+...
+...     dob: new Date('Mar 2,1999'),
+...
+...     skills: ["Java","React","Mysql"],
+...
+...     address: {
+...
+...                             street: "Kumar Sublime",
+...
+...                             house: "A304",
+...
+...                             city : "Pune",
+...
+...                             state : "MH",
+...
+...                             country : "India",
+...
+...                             pincode: 411048
+...
+...                     }
+...
+... },
+...
+... {
+...
+...     firstName: "Keshav",
+...
+...     lastName: "Ingle",
+...
+...     email: "ik@gmail.com",
+...
+...     salary: 100000,
+...
+...     dob: new Date('Oct 14,1995'),
+...
+...     skills: ["Angular","React","Mysql"],
+...
+...     address: {
+...
+...                             street: "Five Gardens Society",
+...
+...                             house: "A456",
+...
+...                             city : "Mumbai",
+...
+...                             state : "MH",
+...
+...                             country : "India",
+...
+...                             pincode: 400001
+...
+...                     }
+...
+... },
+...
+... {
+...
+...     firstName: "Kirti",
+...
+...     lastName: "Moghe",
+...
+...     email: "kirti@yahoo.com",
+...
+...     salary: 50000,
+...
+...     dob: new Date('Apr 15,1996'),
+...
+...     skills: ["Oracle","React",".Net"],
+...
+...     address: {
+...
+...                             street: "Seashore Villas",
+...
+...                             city : "Goa",
+...
+...                             state : "Goa",
+...
+...                             country : "India",
+...
+...                             pincode: 600001
+...
+...                     }
+...
+... }
+...
+... ]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('66b3500494fdfe13d5228fb5'),
+    '1': ObjectId('66b3500494fdfe13d5228fb6'),
+    '2': ObjectId('66b3500494fdfe13d5228fb7')
+  }
+}
+ustdb> db.persons.find();
+[
+  {
+    _id: ObjectId('66b3500494fdfe13d5228fb5'),
+    firstName: 'Vinay',
+    lastName: 'Rao',
+    email: 'vr@hotmail.com',
+    salary: 56000,
+    dob: ISODate('1999-03-01T18:30:00.000Z'),
+    skills: [ 'Java', 'React', 'Mysql' ],
+    address: {
+      street: 'Kumar Sublime',
+      house: 'A304',
+      city: 'Pune',
+      state: 'MH',
+      country: 'India',
+      pincode: 411048
+    }
+  },
+  {
+    _id: ObjectId('66b3500494fdfe13d5228fb6'),
+    firstName: 'Keshav',
+    lastName: 'Ingle',
+    email: 'ik@gmail.com',
+    salary: 100000,
+    dob: ISODate('1995-10-13T18:30:00.000Z'),
+    skills: [ 'Angular', 'React', 'Mysql' ],
+    address: {
+      street: 'Five Gardens Society',
+      house: 'A456',
+      city: 'Mumbai',
+      state: 'MH',
+      country: 'India',
+      pincode: 400001
+    }
+  },
+  {
+    _id: ObjectId('66b3500494fdfe13d5228fb7'),
+    firstName: 'Kirti',
+    lastName: 'Moghe',
+    email: 'kirti@yahoo.com',
+    salary: 50000,
+    dob: ISODate('1996-04-14T18:30:00.000Z'),
+    skills: [ 'Oracle', 'React', '.Net' ],
+    address: {
+      street: 'Seashore Villas',
+      city: 'Goa',
+      state: 'Goa',
+      country: 'India',
+      pincode: 600001
+    }
+  }
+]
+ustdb> db.persons.find({skills:"Java"});
+[
+  {
+    _id: ObjectId('66b3500494fdfe13d5228fb5'),
+    firstName: 'Vinay',
+    lastName: 'Rao',
+    email: 'vr@hotmail.com',
+    salary: 56000,
+    dob: ISODate('1999-03-01T18:30:00.000Z'),
+    skills: [ 'Java', 'React', 'Mysql' ],
+    address: {
+      street: 'Kumar Sublime',
+      house: 'A304',
+      city: 'Pune',
+      state: 'MH',
+      country: 'India',
+      pincode: 411048
+    }
+  }
+]
+ustdb> db.persons.find({email:{$regex:/@gmail/}});
+[
+  {
+    _id: ObjectId('66b3500494fdfe13d5228fb6'),
+    firstName: 'Keshav',
+    lastName: 'Ingle',
+    email: 'ik@gmail.com',
+    salary: 100000,
+    dob: ISODate('1995-10-13T18:30:00.000Z'),
+    skills: [ 'Angular', 'React', 'Mysql' ],
+    address: {
+      street: 'Five Gardens Society',
+      house: 'A456',
+      city: 'Mumbai',
+      state: 'MH',
+      country: 'India',
+      pincode: 400001
+    }
+  }
+]
+ustdb> db.persons.find({dob:{$gt:new Date('2000-01-01')}});
+
+ustdb> db.persons.find(
+...
+... {"address.state":'Goa',
+...
+... "address.city":'Goa'}
+...
+... );
+[
+  {
+    _id: ObjectId('66b3500494fdfe13d5228fb7'),
+    firstName: 'Kirti',
+    lastName: 'Moghe',
+    email: 'kirti@yahoo.com',
+    salary: 50000,
+    dob: ISODate('1996-04-14T18:30:00.000Z'),
+    skills: [ 'Oracle', 'React', '.Net' ],
+    address: {
+      street: 'Seashore Villas',
+      city: 'Goa',
+      state: 'Goa',
+      country: 'India',
+      pincode: 600001
+    }
+  }
+]
+ustdb> db.persons.find({skills: {$in : ["Java","React"]}});
+[
+  {
+    _id: ObjectId('66b3500494fdfe13d5228fb5'),
+    firstName: 'Vinay',
+    lastName: 'Rao',
+    email: 'vr@hotmail.com',
+    salary: 56000,
+    dob: ISODate('1999-03-01T18:30:00.000Z'),
+    skills: [ 'Java', 'React', 'Mysql' ],
+    address: {
+      street: 'Kumar Sublime',
+      house: 'A304',
+      city: 'Pune',
+      state: 'MH',
+      country: 'India',
+      pincode: 411048
+    }
+  },
+  {
+    _id: ObjectId('66b3500494fdfe13d5228fb6'),
+    firstName: 'Keshav',
+    lastName: 'Ingle',
+    email: 'ik@gmail.com',
+    salary: 100000,
+    dob: ISODate('1995-10-13T18:30:00.000Z'),
+    skills: [ 'Angular', 'React', 'Mysql' ],
+    address: {
+      street: 'Five Gardens Society',
+      house: 'A456',
+      city: 'Mumbai',
+      state: 'MH',
+      country: 'India',
+      pincode: 400001
+    }
+  },
+  {
+    _id: ObjectId('66b3500494fdfe13d5228fb7'),
+    firstName: 'Kirti',
+    lastName: 'Moghe',
+    email: 'kirti@yahoo.com',
+    salary: 50000,
+    dob: ISODate('1996-04-14T18:30:00.000Z'),
+    skills: [ 'Oracle', 'React', '.Net' ],
+    address: {
+      street: 'Seashore Villas',
+      city: 'Goa',
+      state: 'Goa',
+      country: 'India',
+      pincode: 600001
+    }
+  }
+]
+ustdb> db.persons.find({skills: {$all : ["Java","React"]}})
+[
+  {
+    _id: ObjectId('66b3500494fdfe13d5228fb5'),
+    firstName: 'Vinay',
+    lastName: 'Rao',
+    email: 'vr@hotmail.com',
+    salary: 56000,
+    dob: ISODate('1999-03-01T18:30:00.000Z'),
+    skills: [ 'Java', 'React', 'Mysql' ],
+    address: {
+      street: 'Kumar Sublime',
+      house: 'A304',
+      city: 'Pune',
+      state: 'MH',
+      country: 'India',
+      pincode: 411048
+    }
+  }
+]
+ustdb> db.persons.find({skills: {$size : 3}})
+[
+  {
+    _id: ObjectId('66b3500494fdfe13d5228fb5'),
+    firstName: 'Vinay',
+    lastName: 'Rao',
+    email: 'vr@hotmail.com',
+    salary: 56000,
+    dob: ISODate('1999-03-01T18:30:00.000Z'),
+    skills: [ 'Java', 'React', 'Mysql' ],
+    address: {
+      street: 'Kumar Sublime',
+      house: 'A304',
+      city: 'Pune',
+      state: 'MH',
+      country: 'India',
+      pincode: 411048
+    }
+  },
+  {
+    _id: ObjectId('66b3500494fdfe13d5228fb6'),
+    firstName: 'Keshav',
+    lastName: 'Ingle',
+    email: 'ik@gmail.com',
+    salary: 100000,
+    dob: ISODate('1995-10-13T18:30:00.000Z'),
+    skills: [ 'Angular', 'React', 'Mysql' ],
+    address: {
+      street: 'Five Gardens Society',
+      house: 'A456',
+      city: 'Mumbai',
+      state: 'MH',
+      country: 'India',
+      pincode: 400001
+    }
+  },
+  {
+    _id: ObjectId('66b3500494fdfe13d5228fb7'),
+    firstName: 'Kirti',
+    lastName: 'Moghe',
+    email: 'kirti@yahoo.com',
+    salary: 50000,
+    dob: ISODate('1996-04-14T18:30:00.000Z'),
+    skills: [ 'Oracle', 'React', '.Net' ],
+    address: {
+      street: 'Seashore Villas',
+      city: 'Goa',
+      state: 'Goa',
+      country: 'India',
+      pincode: 600001
+    }
+  }
+]
+SALES:
+db.sales.insertMany([
+  { "_id" : 1, "item" : "abc", "price" : Decimal128("10"), "quantity" : Int32("2"), "date" : ISODate("2014-03-01T08:00:00Z") },
+  { "_id" : 2, "item" : "jkl", "price" : Decimal128("20"), "quantity" : Int32("1"), "date" : ISODate("2014-03-01T09:00:00Z") },
+  { "_id" : 3, "item" : "xyz", "price" : Decimal128("5"), "quantity" : Int32( "10"), "date" : ISODate("2014-03-15T09:00:00Z") },
+  { "_id" : 4, "item" : "xyz", "price" : Decimal128("5"), "quantity" :  Int32("20") , "date" : ISODate("2014-04-04T11:21:39.736Z") },
+  { "_id" : 5, "item" : "abc", "price" : Decimal128("10"), "quantity" : Int32("10") , "date" : ISODate("2014-04-04T21:23:13.331Z") },
+  { "_id" : 6, "item" : "def", "price" : Decimal128("7.5"), "quantity": Int32("5" ) , "date" : ISODate("2015-06-04T05:08:13Z") },
+  { "_id" : 7, "item" : "def", "price" : Decimal128("7.5"), "quantity": Int32("10") , "date" : ISODate("2015-09-10T08:43:00Z") },
+  { "_id" : 8, "item" : "abc", "price" : Decimal128("10"), "quantity" : Int32("5" ) , "date" : ISODate("2016-02-06T20:20:13Z") },
+])
+
+ustdb> db.sales.find();
+[
+  {
+    _id: 1,
+    item: 'abc',
+    price: Decimal128('10'),
+    quantity: 2,
+    date: ISODate('2014-03-01T08:00:00.000Z')
+  },
+  {
+    _id: 2,
+    item: 'jkl',
+    price: Decimal128('20'),
+    quantity: 1,
+    date: ISODate('2014-03-01T09:00:00.000Z')
+  },
+  {
+    _id: 3,
+    item: 'xyz',
+    price: Decimal128('5'),
+    quantity: 10,
+    date: ISODate('2014-03-15T09:00:00.000Z')
+  },
+  {
+    _id: 4,
+    item: 'xyz',
+    price: Decimal128('5'),
+    quantity: 20,
+    date: ISODate('2014-04-04T11:21:39.736Z')
+  },
+  {
+    _id: 5,
+    item: 'abc',
+    price: Decimal128('10'),
+    quantity: 10,
+    date: ISODate('2014-04-04T21:23:13.331Z')
+  },
+  {
+    _id: 6,
+    item: 'def',
+    price: Decimal128('7.5'),
+    quantity: 5,
+    date: ISODate('2015-06-04T05:08:13.000Z')
+  },
+  {
+    _id: 7,
+    item: 'def',
+    price: Decimal128('7.5'),
+    quantity: 10,
+    date: ISODate('2015-09-10T08:43:00.000Z')
+  },
+  {
+    _id: 8,
+    item: 'abc',
+    price: Decimal128('10'),
+    quantity: 5,
+    date: ISODate('2016-02-06T20:20:13.000Z')
+  }
+]
+ustdb> db.sales.find().count();
+8
+...   {
+...     $group: {
+...        _id: null,
+...        count: { $count: { } }
+...     }
+...   }
+... ] );
+[ { _id: null, count: 8 } ]
+
+ustdb> db.sales.aggregate({$group:{_id:"$item"}});
+[ { _id: 'xyz' }, { _id: 'def' }, { _id: 'jkl' }, { _id: 'abc' } ]
+ustdb> db.sales.aggregate({$group:{_id:"$item",count:{$count:{}}}});
+[
+  { _id: 'jkl', count: 1 },
+  { _id: 'xyz', count: 2 },
+  { _id: 'def', count: 2 },
+  { _id: 'abc', count: 3 }
+]
+ustdb> db.sales.aggregate([{$group:{_id:"$item",totalsaleamount:{$sum:{$multiply:["$price","$quantity"]}}}}]);
+[
+  { _id: 'xyz', totalsaleamount: Decimal128('150') },
+  { _id: 'def', totalsaleamount: Decimal128('112.5') },
+  { _id: 'abc', totalsaleamount: Decimal128('170') },
+  { _id: 'jkl', totalsaleamount: Decimal128('20') }
+]
+
+ustdb> db.sales.aggregate([{$group:{_id:"$item",totalsaleamount:{$sum:{$multiply:["$price","$quantity"]}}}},{$match:{"totalsaleamount":{$gte:100}}}]);
+[
+  { _id: 'xyz', totalsaleamount: Decimal128('150') },
+  { _id: 'def', totalsaleamount: Decimal128('112.5') },
+  { _id: 'abc', totalsaleamount: Decimal128('170') }
+]
+ustdb>  db.sales.aggregate([
+...   // First Stage
+...   {
+...     $match : { "date": { $gte: new ISODate("2014-01-01"), $lt: new ISODate("2015-01-01") } }
+...   },
+...   {
+...     $group : {
+...        _id : { $dateToString: { format: "%Y-%m-%d", date: "$date" } },
+...        totalSaleAmount: { $sum: { $multiply: [ "$price", "$quantity" ] } },
+...        averageQuantity: { $avg: "$quantity" },
+...        count: { $sum: 1 }
+...     }
+...   },
+...     {
+...         $match : { "count": { $gt: -1 } }
+...      },
+...   // Third Stage
+...   {
+...     $sort : { totalSaleAmount: 1 }
+...   }
+...   ]);
+[
+  {
+    _id: '2014-03-01',
+    totalSaleAmount: Decimal128('40'),
+    averageQuantity: 1.5,
+    count: 2
+  },
+  {
+    _id: '2014-03-15',
+    totalSaleAmount: Decimal128('50'),
+    averageQuantity: 10,
+    count: 1
+  },
+  {
+    _id: '2014-04-04',
+    totalSaleAmount: Decimal128('200'),
+    averageQuantity: 15,
+    count: 2
+  }
+]
